@@ -1,0 +1,82 @@
+.container {
+    position: relative;
+    bottom: 8px;
+    width: 70vw;
+    height: 800px;
+    margin: auto;
+    background: rgb(109,246,168);
+    background: linear-gradient(90deg, rgba(109,246,168,1) 0%, rgba(173,255,210,1) 100%);
+    border: 5px solid rgb(172, 217, 199);
+    border-radius: 20px 0px 0px 0px;
+}
+
+.topMenu{
+    background: rgb(255,251,251);
+    background: linear-gradient(90deg, rgba(255,251,251,0.35591736694677867) 0%, rgba(255,252,252,1) 40%, rgba(255,255,255,0.3531162464985994) 100%);
+    overflow: hidden;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 340px;
+}
+
+#watermelonClick {
+    position: relative;
+    left: 39px;
+    bottom: 40px;
+    width: 300px;
+    height: auto;
+    transition: bottom 0.3s;
+    transition-timing-function: cubic-bezier(0.1, 1);
+}
+
+.melonHitbox {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    left: 75px;
+    bottom: 130px;
+    border-radius: 50%;
+    z-index: 11;
+}
+
+.melonContainer {
+    width: 540px;
+    height: 340px;
+    z-index: 10;
+    position: absolute;
+    left: -68px;
+    top: 80px;
+}
+
+
+
+.melonButton {
+    position: relative;
+    left: 39px;
+    bottom: 10px;
+    width: 180px;
+    height: auto;
+}
+
+.melonSquare {
+    width: 400px;
+    height: 400px;
+    background: white;
+    border-radius: 20px;
+    position: relative;
+    float: left;
+    display: block;
+}
+
+.melons {
+    width: 55%;
+    height: 300px;
+    float: left;
+    display: block;
+    margin-top: 20px;
+    border-radius: 30px;
+    position: relative;
+    left: 50px;
+    top: -5px;
+}
