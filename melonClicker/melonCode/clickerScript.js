@@ -17,59 +17,43 @@ const secondDivider = 100;
 
 let price1 = 200;
 let buildingCount1 = 0;
+let building1Melons = 4;
 const plantPrice = document.getElementById("plantPrice");
 const plantCount = document.getElementById("plantCount");
 function firstBuilding() {
   if (melons >= price1) {
     melons -= price1;
-    price1 = Math.floor(price1 * 1.15);
-    melonPerSec += 2;
+    price1 = Math.floor(price1 * 1.05);
     buildingCount1 += 1;
-    melonSecUpdate();
-    plantPrice.innerHTML = `price: ${price1}`;
-    plantCount.innerHTML = buildingCount1;
+    numberToDisplay(price1, plantPrice, buildingCount1, plantCount, building1Melons);
   }
 }
 
 let price2 = 2500;
 let buildingCount2 = 0;
+let building2Melons = 1000;
 const farmPrice = document.getElementById("farmPrice");
 const farmCount = document.getElementById("farmCount");
 function secondBuilding() {
-  if(melons >= price2){
-    melons -= price2;
-    price2 = Math.floor(price2 * 1.15);
-    if(price2 > 10000){
-      let price2Display = Math.round(price2 / 100) / 10;
-      farmPrice.innerHTML = `price: ${price2Display}k`;
-    }
-    else{
-      farmPrice.innerHTML = `price: ${price2}`;
-    }
-    melonPerSec += 1000;
-    buildingCount2 += 1;
-    melonSecUpdate();
-    farmCount.innerHTML = buildingCount2;
+  if(melons > price2){
+  melons -= price2;
+  buildingCount2 += 1;
+  price2 = Math.floor(price2 * 1.15);
+  numberToDisplay(price2, farmPrice, buildingCount2, farmCount, building2Melons);
   }
-  
 }
 
-function numberToDisplay(prijs, prijsDisplay, buildingPrice, buildingCount, buildingNumber){
-  if(melons >= price2){
-    melons -= price2;
-    price2 = Math.floor(price2 * 1.15);
-    if(price2 > 10000){
-      let price2Display = Math.round(price2 / 100) / 10;
-      farmPrice.innerHTML = `price: ${price2Display}k`;
+function numberToDisplay(prijs, buildingPrice, buildingCount, buildingNumber, addedSeconds){
+    if(prijs > 10000){
+      let prijsDisplay = Math.round(prijs / 100) / 10;
+      buildingPrice.innerHTML = `price: ${prijsDisplay}k`;
     }
     else{
-      farmPrice.innerHTML = `price: ${price2}`;
+      buildingPrice.innerHTML = `price: ${prijs}`;
     }
-    melonPerSec += 1000;
-    buildingCount2 += 1;
+    melonPerSec += addedSeconds;
     melonSecUpdate();
-    farmCount.innerHTML = buildingCount2;
-  }
+    buildingNumber.innerHTML = buildingCount;
 }
 function clickMelon() {
   melons += 1;
