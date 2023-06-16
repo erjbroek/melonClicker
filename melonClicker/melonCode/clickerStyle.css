@@ -69,11 +69,6 @@
     display: block;
 }
 
-.buttonHolder{
-    position: relative;
-    top: -10px;
-}
-
 .upgradeList {
     position: absolute;
     top: 340px;
@@ -83,27 +78,85 @@
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.3335084033613446) 47%, rgba(255,255,255,0.2046568627450981) 100%);
     bottom: 30px;
     display: block;
-    z-index: 100;
 }
 
 .upgradeContainer {
     width: 370px;
-    height: 300px;;
+    height: 320px;;
     margin-left: 15px;
     margin-top: 30px;
 }
 
 .upgrades {
-    display: block;
+    display: grid;
     width: 350px;
-    height: 300px;
+    height: 275px;
     position: relative;
     margin-left: 10px;
     margin-top: 20px;
     border-radius: 20px;
     background: rgb(183, 232, 151);
     z-index: 10;
+    overflow: hidden;
+    padding-top: 1vw;
 }
+
+.added {
+    font-family: "Century Gothic";
+    font-weight: bold;
+}
+
+.upgrade {
+    background-color: #68c46b;
+    width: 90%;
+    margin-top: 0.95vw;
+    height: 16.2vh;
+    top: -1.6vh;
+    left: 1.2vw;
+    border-radius: 1.3vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.upgradeTitle {
+    padding-top: 5px;
+    color: black;
+    left: 1.2vw;
+    border-radius: 1.3vw;
+    overflow: hidden;
+    position: relative;
+    font-family: "Century Gothic";
+    font-size: 130%;
+    font-weight: 100;
+}
+
+.upgradeDescription {
+    color: black;
+    position: relative;
+    bottom: 0.8vw;
+    left: 1.4vw;
+    max-width: 18vw;
+    font-family: "Century Gothic";
+    font-size: 80%;
+}
+
+#melon-info {
+    margin-top: 20px;
+}
+
+.upgradePrice {
+    color: black;
+    position: relative;
+    bottom: 0.3vw;
+    left: 1.4vw;
+    max-width: 18vw;
+    font-family: "Century Gothic";
+    font-size: 80%;
+}
+
+/* .description {
+    
+} */
 
 .melonCounter {
     position: relative;
@@ -126,51 +179,6 @@
     right: 10px;
     top: 4vw;
     display: inline-block;
-    font-family: "Century Gothic";
-}
-
-.melonClickUpgrade{
-    width: 250px;
-    height: 30px;
-    background: #ff6666;
-    border-radius: 20px;
-    z-index: 100;
-    position: absolute;
-    top: 38vh;
-    left: 5vw;
-}
-
-.clickPrice{
-    color: black;
-    font-family: "Century Gothic";
-    float: left;
-    Font-weight: bold;
-    position: relative;
-    z-index: 1000;
-    top: 30px;
-    left: 2vw;
-    font-size: 110%;
-}
-
-.clickAmount{
-    position: relative;
-    left: 40px;
-    bottom: 18px;
-    width: 200px;
-    color: white;
-    font-weight: bold;
-    font-size: 120%;
-    text-align: right;
-    font-family: "Century Gothic";
-}
-
-.amountOfUpgrades {
-    color: white;
-    font-weight: bold;
-    position: relative;
-    bottom: 43px;
-    left: 5px;
-    font-size: 120%;
     font-family: "Century Gothic";
 }
 
@@ -205,7 +213,7 @@
 }
 
 #buildingName{
-    width: 200px;
+    width: 130px;
     height: 30px;   
     font-family: "Century Gothic";
     font-weight: bold;
@@ -216,17 +224,16 @@
     z-index: 10;
 }
 
-#addedMelonsPerSec{
+.addedMelonsPerSec{
     width: 100px;
     height: 30px;
     font-family: "Century Gothic";
+    font-weight: bold;
     position: relative;
     top: -24px;
     float: right;
     right: 5px;
-    font-size: 120%;
     color: darkgreen;
-    text-align: right;
 }
 
 .price{
@@ -237,7 +244,7 @@
     position: relative;
     text-align: right;
     left: 120px;
-    top: 47px;
+    top: 40px;
 }
 
 .count{

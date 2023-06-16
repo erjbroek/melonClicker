@@ -5,75 +5,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
     <link rel="stylesheet" href="clickerStyle.css">
     <title>Clicker</title>
 </head>
 
 <body>
+
     <div class="container">
         <div class="topMenu">
             <div class="melonCounter" id="melonCounter">MELONS</div>
             <div class="melonAmount" id="melonAmount"></div>
             <div class="melonPerSec" id="melonPerSec"></div>
             <div class="melonSquare">
-                <div class="melonClickUpgrade" id="clickUpgrade">
-                    <div class="clickPrice" id="clickPrice">Increases melons/click</div>
-                    <div class="clickAmount" id="clickAmount">40</div>
-                    <div class="amountOfUpgrades" id="amountOfUpgrades">1 Melon / click</div>
-                </div>
-                <div class="buttonHolder">
                 <img src="Images/waterMelon.png" id="watermelonClick"></img>
                 <img src="Images/melonContainer.png" class="melonContainer">
+                <audio id="clickSound" src="Images/click-menu-app-147357.mp3" preload="auto"></audio>
                 <div class="melonHitbox" id="melonHitbox" onmousedown="mouseDown()" onmouseup="mouseUp()"></div>
-                </div>
             </div>
         </div>
         <div class="upgradeList">
+
             <div class="upgradeContainer" id="upgradeCounter">
-                <span class="upgrades"></span>
+                <div class="upgrades" id="upgrades">
+                    <div class="upgrade" id="upgrade1">
+                        <h1 class="upgradeTitle">Better fertilizer</h1>
+                        <p class="upgradeDescription">Using better fertilizer from the store makes sure the plants grow
+                            faster!</p>
+                        <p class="upgradePrice">100</p>
+                    </div>
+                    <div class="upgrade" id="upgrade2">
+                        <h1 class="upgradeTitle">Water cooling system</h1>
+                        <p class="upgradeDescription">Now the farmer doesn't have to water the plants on his own, it
+                            goes automatically now</p>
+                    </div>
+                    <div class="upgrade" id="upgrade3">
+
+                    </div>
+                </div>
             </div>
+            <div id="melonData"></div>
+            <div id="melonInfo"></div>
+
+            <script>
+                fetch("https://cors-anywhere.herokuapp.com/https://www.fruityvice.com/api/fruit/strawberry", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "User-Agent": "Kippensoep",
+                        "Accept": "*/*",
+                    },
+                    mode: "cors",
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        fetchedData = data; // Store the fetched data in a global variable
+                        melon(); // Call the melon() function after the data is fetched
+                    })
+                    .catch((e) => console.log(e));
+
+                function melon() {
+                    const melonData = document.getElementById('melonData');
+                    melonData.innerHTML = `
+                    <h2>${fetchedData.name}</h2>
+                    <p>Family: ${fetchedData.family}</p>
+                    <p>Order: ${fetchedData.order}</p>
+                    <p>Genus: ${fetchedData.genus}</p>
+                    <h3>Nutritional Information</h3>
+                    <p>Calories: ${fetchedData.nutritions.calories}kcal</p>
+                    <p>Fat: ${fetchedData.nutritions.fat}g</p>
+                    <p>Sugar: ${fetchedData.nutritions.sugar}g</p>
+                    <p>Carbohydrates: ${fetchedData.nutritions.carbohydrates}g</p>
+                    <p>Protein: ${fetchedData.nutritions.protein}g</p>
+                    `;
+                }
+            </script>
+
         </div>
         <div class="buildingContainer" id="buildingContainer">
             <div class="building" id="building1">
                 <div id="buildingName">melon plant</div>
-                <div id="addedMelonsPerSec">+ 10</div>
-                <div id="plantPrice" class="price">price: 300</div>
+                <div id="addedPlant" class="addedMelonsPerSec"> 0 Melons/s</div>
+                <div id="plantPrice" class="price">price: 10</div>
                 <div id="plantCount" class="count">0</div>
                 <img src="Images/plant.png" id="picture">
             </div>
             <div class="building" id="building2">
                 <div id="buildingName">melon farm</div>
-                <div id="addedMelonsPerSec">+ 150</div>
-                <div id="farmPrice" class="price">price: 2000</div>
+                <div id="addedFarm" class="addedMelonsPerSec"> 0 Melons/s</div>
+                <div id="farmPrice" class="price">price: 300</div>
                 <div id="farmCount" class="count">0</div>
                 <img src="Images/farm.png" id="picture">
             </div>
             <div class="building" id="building3">
-                <div id="buildingName">melon factory</div>
-                <div id="addedMelonsPerSec">+ 1500</div>
-                <div id="factoryPrice" class="price">price: 15k</div>
-                <div id="factoryCount" class="count">0</div>
+                <div id="buildingName">melon plant</div>
+                <div id="addedMelonsPerSec" class="addedMelonsPerSec">+ 2 Melons/s</div>
+                <div id="plantPrice" class="price">price: 30</div>
+                <div id="plantCount" class="count">20</div>
                 <img src="Images/farm.png" id="picture">
             </div>
             <div class="building" id="building4">
-                <div id="buildingName">melon temple</div>
-                <div id="addedMelonsPerSec">+ 14000</div>
-                <div id="templePrice" class="price">price: 250k</div>
-                <div id="templeCount" class="count">0</div>
+                <div id="buildingName">melon plant</div>
+                <div id="addedMelonsPerSec" class="addedMelonsPerSec">+ 2 Melons/s</div>
+                <div id="plantPrice" class="price">price: 30</div>
+                <div id="plantCount" class="count">20</div>
                 <img src="Images/farm.png" id="picture">
             </div>
             <div class="building" id="building5">
-                <div id="buildingName">Melonia</div>
-                <div id="addedMelonsPerSec">+ 1000</div>
-                <div id="countryPrice" class="price">price: 1000</div>
-                <div id="countryCount" class="count">0</div>
+                <div id="buildingName">melon plant</div>
+                <div id="addedMelonsPerSec" class="addedMelonsPerSec">+ 2 Melons/s</div>
+                <div id="plantPrice" class="price">price: 30</div>
+                <div id="plantCount" class="count">20</div>
                 <img src="Images/" id="picture">
             </div>
             <div class="building" id="building6">
-                <div id="buildingName">melon planet</div>
-                <div id="addedMelonsPerSec">+ 1000</div>
-                <div id="planetPrice" class="price">price: 1000</div>
-                <div id="planetCount" class="count">0</div>
+                <div id="buildingName">melon plant</div>
+                <div id="addedMelonsPerSec" class="addedMelonsPerSec">+ 2 Melons/s</div>
+                <div id="plantPrice" class="price">price: 30</div>
+                <div id="plantCount" class="count">20</div>
                 <img src="Images/farm.png" id="picture">
             </div>
         </div>
