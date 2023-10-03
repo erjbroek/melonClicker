@@ -5,7 +5,7 @@
     height: 94vh;
     margin: auto;
     margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 1px;
     background: rgb(109,246,168);
     background: linear-gradient(90deg, rgba(109,246,168,1) 0%, rgba(173,255,210,1) 100%);
     border: 5px solid rgb(172, 217, 199);
